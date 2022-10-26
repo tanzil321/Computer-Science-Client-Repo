@@ -1,4 +1,4 @@
-import { signInWithPopup } from 'firebase/auth';
+import { GithubAuthProvider, signInWithPopup } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -11,7 +11,7 @@ const Login = () => {
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
 
-  const { signin, resetPassword, signInWithGoogle } = useContext(AuthContext)
+  const { signin, resetPassword, signInWithGoogle, gitSignIn } = useContext(AuthContext)
 
   const handleSubmit = event => {
     event.preventDefault()
@@ -21,8 +21,14 @@ const Login = () => {
 
     signin(email, password)
       .then(result => {
-        toast.success('Login Success!')
+        let user = result.user
+        if(user.emailVerified){
+          toast.success('Login Success!')
         navigate(from, { replace: true })
+        }
+        else{
+          toast.warning('Please Verify Your Email')
+        }
         console.log(result.user)
       })
       .catch(error => toast.error(error.message))
@@ -36,11 +42,14 @@ const Login = () => {
     })
   }
   //Github Signin
+  let githubProvider = new GithubAuthProvider()
   const handleGithubSignin=()=>{
-    signInWithPopup().then(result =>{
-      console.log(result.user)
-      navigate(from,{replace:true});
-    } )
+    gitSignIn(githubProvider)
+    .then(() => {
+      toast.success('Reset link has been sent, please check email')
+    })
+    .catch(error => toast.error(error.message))
+    navigate(from, { replace: true })
   }
 
   //Reset Pass
@@ -52,7 +61,7 @@ const Login = () => {
       .catch(error => toast.error(error.message))
   }
     return (
-        <div className='flex justify-center items-center pt-8 '>
+        <div className='flex justify-center items-center pt-8 py-8'>
            
       <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
         <img  src={require("../assets/loginpg.jpg")} alt="" />
@@ -107,7 +116,7 @@ const Login = () => {
           <div>
             <button
               type='submit'
-              className='w-full px-8 py-3 font-semibold rounded-md bg-gray-900 hover:bg-gray-700 hover:text-white text-gray-100'
+              className='w-full px-8 py-3 font-semibold rounded-md bg-gray-900 hover:bg-gray-700 hover:text-white text-gray-100 tracking-wide text-white transition duration-200 shadow-md bg-blue-400 hover:bg-blue-700 focus:shadow-outline focus:outline-none'
             >
               Sign in
             </button>

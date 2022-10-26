@@ -55,12 +55,13 @@ const Navbar = () => {
 
           {user?.uid ? (
             <>
-            <span className='mr-5 text-purple-900 font-bold'> {user?.displayName}</span>
+            <span className='mr-5 text-purple-900 font-bold'> {user? <h1>{user.displayName}</h1>:''}</span>
             <div>
                     {
-                        user ? <img src={user.photoURL} title={user.displayName} style={{
-                            width: '80px',
+                        user ? <img src={user.photoURL} title={user?.displayName} style={{
+                            width: '40px',
                             borderRadius: '50%',
+                            marginRight:'10px'
                         }} alt="" /> : ''
                     }
                 </div>
@@ -83,13 +84,18 @@ const Navbar = () => {
               </button>
             </>
           ) : (
-            <Link to='/login' className='inline-flex items-center bg-slate-400 border-0 py-1 px-3 focus:outline-none hover:bg-slate-500 rounded text-base mt-4 md:mt-0'>
+            <>
+            <Link to='/login' className='inline-flex  items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-blue-400 hover:bg-blue-700 focus:shadow-outline focus:outline-none'>
               Login
             </Link>
+            <Link to='/register' className='inline-flex  items-center justify-center h-12 px-6 mr-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-blue-400 hover:bg-blue-700 focus:shadow-outline focus:outline-none'>
+            Register
+          </Link>
+            </>
           )}
         </nav>
         <nav>
-          
+        
         </nav>
       </div>
     </header>

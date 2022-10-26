@@ -23,7 +23,7 @@ const Register = () => {
     createUser(email, password)
       .then(result => {
         console.log(result.user)
-
+        handleVerify()
         //2. Update Name
         updateName(name)
           .then(() => {
@@ -36,14 +36,7 @@ const Register = () => {
             
 
             //3. Email verification
-            verifyEmail()
-              .then(() => {
-                toast.success('Please check your email for verification link')
-                navigate(from, { replace: true })
-              })
-              .catch(error => {
-                toast.error(error.message)
-              })
+            
           })
           .catch(error => {
             toast.error(error.message)
@@ -59,9 +52,18 @@ const Register = () => {
       navigate(from, { replace: true })
     })
   }
-  
+  let handleVerify = () =>{
+    verifyEmail()
+    .then(() => {
+      toast.success('Please check your email for verification link')
+      navigate(from, { replace: true })
+    })
+    .catch(error => {
+      toast.error(error.message)
+    })
+  }
     return (
-        <div className='flex justify-center items-center pt-8'>
+        <div className='flex justify-center items-center pt-8 py-8'>
           
       <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
       <img  src={require("../assets/register.jpg")} alt="" />
@@ -134,7 +136,7 @@ const Register = () => {
             <div>
               <button
                 type='submit'
-                className='w-full px-8 py-3 font-semibold rounded-md bg-gray-900 hover:bg-gray-700 hover:text-white text-gray-100'
+                className='w-full px-8 py-3 font-semibold rounded-md bg-gray-900 hover:bg-gray-700 hover:text-white text-gray-100 tracking-wide text-white transition duration-200  shadow-md bg-blue-400 hover:bg-blue-700 focus:shadow-outline focus:outline-none'
               >
                 Sign Up
               </button>

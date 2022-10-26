@@ -55,7 +55,10 @@ import app from '../firebase/firebase.config'
       return updateURL(auth)
     }
     // Github Signin
-  
+    const gitSignIn = (Gitprovider) => {
+      setLoading(true)
+      return signInWithPopup(auth, Gitprovider)
+  }
     // 5. Logout
     const logout = () => {
       setLoading(true)
@@ -88,6 +91,7 @@ import app from '../firebase/firebase.config'
     }, [])
   
     const authInfo = {
+      gitSignIn,
       user,
       createUser,
       updateName,

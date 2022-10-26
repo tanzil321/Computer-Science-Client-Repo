@@ -13,11 +13,14 @@ const Courses = () => {
     return (
         <div className='flex justify-around mt-5 '>
             <div>
+                <h1 className='text-center text-cyan-400 mb-4 font-sans text-3xl font-bold'>Availabe Courses</h1>
                 {product.map(option => <LeftSideNav
                 option={option}
                 ></LeftSideNav>)}
             </div>
+            
             <div className='grid gap-8 row-gap-5 mb-8  lg:grid-cols-2 lg:row-gap-8'>
+                
                 {product.map(cart =><RightSideNav
                 cart={cart}
                 ></RightSideNav>
