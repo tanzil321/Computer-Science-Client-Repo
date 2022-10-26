@@ -116,7 +116,7 @@ const Login = () => {
           <div>
             <button
               type='submit'
-              className='w-full px-8 py-3 font-semibold rounded-md bg-gray-900 hover:bg-gray-700 hover:text-white text-gray-100 tracking-wide text-white transition duration-200 shadow-md bg-blue-400 hover:bg-blue-700 focus:shadow-outline focus:outline-none'
+              className='w-full px-8 py-3 font-semibold rounded-md hover:text-white text-gray-100 tracking-wide text-white transition duration-200 shadow-md bg-blue-400 hover:bg-blue-700 focus:shadow-outline focus:outline-none'
             >
               Sign in
             </button>

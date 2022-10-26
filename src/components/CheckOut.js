@@ -1,14 +1,17 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
+
 
 const CheckOut = () => {
+	let checkOut = useLoaderData()
+	let {course_details,course_name,picture,rating,time,_id}=checkOut
     
     return (
         <section className="py-20 dark:bg-gray-800 dark:text-gray-100">
 	<div className="container px-4 mx-auto">
 		<div className="max-w-2xl mx-auto mb-16 text-center">
-			<span className="font-bold tracking-wider uppercase dark:text-violet-400">Pricing</span>
-			<h2 className="text-4xl font-bold lg:text-5xl">Choose your best plan</h2>
+			<span className="font-bold tracking-wider uppercase dark:text-violet-400 mb-5">Pricing</span>
+			<h2 className="text-4xl font-bold lg:text-5xl">Choose your best plan for  {course_name}</h2>
 		</div>
 		<div className="flex flex-wrap items-stretch -mx-4">
 			<div className="flex w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
@@ -76,7 +79,7 @@ const CheckOut = () => {
 							<span>Aenean et lectus blandit</span>
 						</li>
 					</ul>
-					<a rel="noopener noreferrer" href="#" className="inline-block w-full px-5 py-3 font-bold tracking-wider text-center rounded dark:bg-gray-800 dark:text-violet-400">Get Started</a>
+					<Link rel="noopener noreferrer" href="#" className="inline-block w-full px-5 py-3 font-bold tracking-wider text-center rounded dark:bg-gray-800 dark:text-violet-400">Get Started</Link>
 				</div>
 			</div>
 			<div className="w-full mb-8 sm:px-4 md:w-1/2 lg:w-1/3 lg:mb-0">
@@ -120,7 +123,7 @@ const CheckOut = () => {
 							<span>Vivamus ut lectus ex</span>
 						</li>
 					</ul>
-					<a rel="noopener noreferrer" href="#" className="inline-block w-full px-5 py-3 font-semibold tracking-wider text-center rounded dark:bg-violet-400 dark:text-gray-900">Get Started</a>
+					<Link rel="noopener noreferrer" href="#" className="inline-block w-full px-5 py-3 font-semibold tracking-wider text-center rounded dark:bg-violet-400 dark:text-gray-900">Get Started</Link>
 				</div>
 			</div>
 		</div>

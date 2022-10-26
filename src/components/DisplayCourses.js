@@ -7,6 +7,7 @@ const DisplayCourses = () => {
     let {course_details,course_name,picture,rating,time,_id}=details
     return (
         <div className='px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20'>
+          
       <div className='flex flex-col max-w-screen-lg overflow-hidden bg-white border rounded shadow-sm lg:flex-row sm:mx-auto'>
         <div className=' lg:w-1/2'>
           <img
@@ -24,8 +25,9 @@ const DisplayCourses = () => {
           <h5 className='mb-3 text-3xl font-extrabold leading-none sm:text-4xl'>
             {course_name}
           </h5>
+          <button className='w-full px-8 py-3 font-semibold rounded-md hover:text-white text-gray-100 tracking-wide text-white transition duration-200 shadow-md bg-slate-900 hover:bg-slate-700 focus:shadow-outline focus:outline-none'>Download PDF</button>
           
-          <p className='mb-5 text-gray-900'>Course Duration: {time} year</p>
+          <p className='mb-5 mt-10 text-gray-900'>Course Duration: {time} year</p>
           <p className='mb-5 text-gray-900'>User Rating: {rating}</p>
           <p className='mb-5 text-gray-800'>{course_details}...</p>
           <div className='flex items-center'>
