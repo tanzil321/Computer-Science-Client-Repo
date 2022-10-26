@@ -1,10 +1,12 @@
 import React, { useContext } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../contexts/UserContext';
 
 const Navbar = () => {
     const { user, logout } = useContext(AuthContext)
+    
 
   const handleLogout = () => {
     logout()
@@ -46,15 +48,22 @@ const Navbar = () => {
             Blog
           </Link>
 
+            <label htmlFor="check" className='cursor-pointer bg-slate-400 relative mr-5 w-20 h-10 rounded-full '>
+              <input type="checkbox" id="check" className='sr-only peer' />
+              <span className='w-2/5 h-4/5 bg-slate-600 absolute rounded-full left-1 top-1 peer-checked:bg-white peer-checked:left-11 transition-all duration-500'></span>
+            </label>
+
           {user?.uid ? (
             <>
             <span className='mr-5 text-purple-900 font-bold'> {user?.displayName}</span>
-              {/* <Link to='/profile' className='mr-5 hover:text-gray-900'>
-                Profile
-              </Link>
-              <Link to='/wallet' className='mr-5 hover:text-gray-900'>
-                Wallet
-              </Link> */}
+            <div>
+                    {
+                        user ? <img src={user.photoURL} title={user.displayName} style={{
+                            width: '80px',
+                            borderRadius: '50%',
+                        }} alt="" /> : ''
+                    }
+                </div>
               <button
                 onClick={handleLogout}
                 className='inline-flex items-center bg-slate-400 border-0 py-1 px-3 focus:outline-none hover:bg-red-600 rounded text-base mt-4 md:mt-0'
@@ -84,6 +93,7 @@ const Navbar = () => {
         </nav>
       </div>
     </header>
+    
     );
 };
 

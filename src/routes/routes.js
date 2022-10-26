@@ -28,8 +28,18 @@ const router = createBrowserRouter([
         },
         {
           path: '/course',
-          element: <Courses />,
+          loader:({params})=>{
+            return fetch('https://computer-science-server.vercel.app')
+          },
+          element: <Courses/>,
         },
+        // {
+        //   path: '/categories/:id',
+        //   loader:({params})=>{
+        //     return fetch(`https://computer-science-server.vercel.app/categories/${params.id}`)
+        //   },
+        //   element: <Courses />,
+        // },
         {
           path: '/faq',
           element: <Faq/>
