@@ -2,6 +2,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 
+
+
 const DisplayCourses = () => {
     let details= useLoaderData();
     console.log(details);
@@ -28,6 +30,7 @@ const DisplayCourses = () => {
           </h5>
           
           <button className='w-full px-8 py-3 font-semibold rounded-md hover:text-white text-gray-100 tracking-wide text-white transition duration-200 shadow-md bg-slate-900 hover:bg-slate-700 focus:shadow-outline focus:outline-none'>Download PDF</button>
+          
           
           
           <p className='mb-5 mt-10 text-gray-900'>Course Duration: {time} year</p>
