@@ -7,6 +7,7 @@ import { AuthContext } from '../contexts/UserContext';
 
 const Navbar = () => {
     const { user, logout } = useContext(AuthContext)
+    console.log(user);
     useEffect(() => {
       console.log('Navbar',JSON.stringify(user));
     },[user])

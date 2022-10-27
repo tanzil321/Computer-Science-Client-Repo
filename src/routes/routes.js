@@ -31,13 +31,13 @@ const router = createBrowserRouter([
         },
         {
           path: '/course',
-          loader:({params})=>{
-            return fetch('https://computer-science-server.vercel.app')
+          loader:()=>{
+            return fetch('https://computer-science-server.vercel.app/categories')
           },
           element: <Courses/>,
         },
         {
-          path: '/categories/:id',
+          path: '/course/:id',
           loader:({params})=>{
             return fetch(`https://computer-science-server.vercel.app/categories/${params.id}`)
           },

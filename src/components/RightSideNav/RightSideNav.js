@@ -13,7 +13,7 @@ const RightSideNav = ({cart}) => {
       <p className='mb-2 text-xl font-bold leading-none sm:text-2xl'>{course_name}</p>
       <p className='text-gray-700 '>Duration: {time} year</p>
       <p className='text-gray-700 font-bold'>User Rating: {rating}</p>
-      <Link to={`/categories/${_id}`}>
+      <Link to={`/course/${_id}`}>
       <button
         // onClick={() => handleAddToCart(product)}
         type='button'
