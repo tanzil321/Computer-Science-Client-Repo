@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import { fastar } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { PDFDownloadLink, Page, Text, View, Document, StyleSheet, Image } from '@react-pdf/renderer';
@@ -73,8 +73,8 @@ const DisplayCourses = () => {
           
           
           <p className='mb-5 mt-10 text-gray-900'>Course Duration: {time} year</p>
-          <p className='mb-5 text-gray-900'>User Rating: {rating}</p>
-          <FontAwesomeIcon></FontAwesomeIcon>
+          <p className='mb-5 text-gray-900'>User Rating: {rating} <FontAwesomeIcon icon=" fastar" /> </p>
+          
           <p className='mb-5 text-gray-800'>{course_details}...</p>
           <div className='flex items-center'>
             <Link to={`/checkout/${_id}`}>
