@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 
@@ -25,10 +26,13 @@ const DisplayCourses = () => {
           <h5 className='mb-3 text-3xl font-extrabold leading-none sm:text-4xl'>
             {course_name}
           </h5>
+          
           <button className='w-full px-8 py-3 font-semibold rounded-md hover:text-white text-gray-100 tracking-wide text-white transition duration-200 shadow-md bg-slate-900 hover:bg-slate-700 focus:shadow-outline focus:outline-none'>Download PDF</button>
+          
           
           <p className='mb-5 mt-10 text-gray-900'>Course Duration: {time} year</p>
           <p className='mb-5 text-gray-900'>User Rating: {rating}</p>
+          <FontAwesomeIcon></FontAwesomeIcon>
           <p className='mb-5 text-gray-800'>{course_details}...</p>
           <div className='flex items-center'>
             <Link to={`/checkout/${_id}`}>

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useEffect } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -6,7 +7,9 @@ import { AuthContext } from '../contexts/UserContext';
 
 const Navbar = () => {
     const { user, logout } = useContext(AuthContext)
-    
+    useEffect(() => {
+      console.log('Navbar',JSON.stringify(user));
+    },[user])
 
   const handleLogout = () => {
     logout()
@@ -55,10 +58,10 @@ const Navbar = () => {
 
           {user?.uid ? (
             <>
-            <span className='mr-5 text-purple-900 font-bold'> {user? <h1>{user.displayName}</h1>:''}</span>
+            <span className='mr-5 text-purple-900 font-bold'> <h1> {user?.uid? user?.displayName : 'user'}</h1></span>
             <div>
                     {
-                        user ? <img src={user.photoURL} title={user?.displayName} style={{
+                        user ? <img src={user?.photoURL} title={user?.displayName} style={{
                             width: '40px',
                             borderRadius: '50%',
                             marginRight:'10px'

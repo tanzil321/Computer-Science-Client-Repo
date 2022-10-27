@@ -7,7 +7,7 @@ const Register = () => {
     const navigate = useNavigate()
   const location = useLocation()
   const from = location.state?.from?.pathname || '/'
-  const { createUser, updateName, verifyEmail, signInWithGoogle,updateURL } =
+  const { createUser,setUser, updateName, updatePhotoURL, verifyEmail, signInWithGoogle,updateURL } =
     useContext(AuthContext)
 
   // Signup using Email & Pass
@@ -23,9 +23,11 @@ const Register = () => {
     createUser(email, password)
       .then(result => {
         console.log(result.user)
+        setUser(result?.user)
         handleVerify()
         //2. Update Name
         updateName(name)
+        updatePhotoURL(photoURL)
           .then(() => {
             toast.success('Name Updated')
             //photo URL
@@ -136,7 +138,7 @@ const Register = () => {
             <div>
               <button
                 type='submit'
-                className='w-full px-8 py-3 font-semibold rounded-md bg-gray-900 hover:bg-gray-700 hover:text-white text-gray-100 tracking-wide text-white transition duration-200  shadow-md bg-blue-400 hover:bg-blue-700 focus:shadow-outline focus:outline-none'
+                className='w-full px-8 py-3 font-semibold rounded-md  hover:text-white text-gray-100 tracking-wide text-white transition duration-200  shadow-md bg-blue-400 hover:bg-blue-700 focus:shadow-outline focus:outline-none'
               >
                 Sign Up
               </button>

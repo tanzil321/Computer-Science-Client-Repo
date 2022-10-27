@@ -37,6 +37,11 @@ import app from '../firebase/firebase.config'
       return updateProfile(auth.currentUser, { displayName: name })
     }
   
+    const updatePhotoURL = url => {
+      setLoading(true)
+      return updateProfile(auth.currentUser, { photoURL: url })
+    }
+  
     //   3. Email Verify
     const verifyEmail = () => {
       setLoading(true)
@@ -82,6 +87,8 @@ import app from '../firebase/firebase.config'
       const unsubscribe = onAuthStateChanged(auth, currentUser => {
         setUser(currentUser)
         setLoading(false)
+        console.log('current user',currentUser);
+        console.log('user',user);
       })
   
       return () => {
@@ -93,6 +100,7 @@ import app from '../firebase/firebase.config'
     const authInfo = {
       gitSignIn,
       user,
+      setUser,
       createUser,
       updateName,
       updateURL,
@@ -102,6 +110,7 @@ import app from '../firebase/firebase.config'
       signin,
       resetPassword,
       loading,
+      updatePhotoURL
     }
   
     return (
